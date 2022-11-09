@@ -4,7 +4,7 @@ const getDiets = async () => {
   const diets = await Diet.findAll();
   if (diets.length === 0) {
     const arrayDiets = [
-      { name: "gluten Free" },
+      { name: "gluten free" },
       { name: "ketogenic" },
       { name: "vegetarian" },
       { name: "lacto vegetarian" },
