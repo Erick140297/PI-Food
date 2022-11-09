@@ -11,38 +11,38 @@ const getRecipesFromApi = async () => {
 
   recipesData.data.results.map((e) => {
 
+    let dietsDefault = []
     let diets = []
 
   if(e.vegetarian === true) {
-    diets.push("vegetarian")
+    dietsDefault.push("vegetarian")
   }
 
   if(e.vegan === true) {
-    diets.push("vegan")
+    dietsDefault.push("vegan")
   }
 
   if(e.glutenFree === true) {
-    diets.push("gluten free")
+    dietsDefault.push("gluten free")
   }
 
   if(e.dairyFree === true) {
-    diets.push("dairy free")
+    dietsDefault.push("dairy free")
   }
+
+  let repetDiets = dietsDefault.concat(e.diets)
+  let setDiets = new Set(repetDiets);
+
+  diets = [...setDiets]
 
     const recipe = {
       id: e.id,
       image: e.image,
       name: e.title,
       dishTypes: e.dishTypes,
-      diets: diets.concat(e.diets),
+      diets: diets,
       summary: e.summary,
       healthScore: e.healthScore,
-      // steps: e.analyzedInstructions[0]?.steps.map((e) => {
-      //   return {
-      //     number: e.number,
-      //     step: e.step,
-      //   };
-      // }),
       steps: e.analyzedInstructions[0]?.steps.map((e) => {
         return e.step
       }),
