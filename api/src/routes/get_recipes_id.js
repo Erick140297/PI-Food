@@ -1,10 +1,12 @@
 const { Router } = require("express");
+const getRecipeById = require("../controllers/getRecipeById");
 const router = Router()
 
-router.get("/recipes/:id", (req, res) => {
+router.get("/recipes/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    res.status(200).json(id);
+    const response = await getRecipeById(parseInt(id));
+    res.status(200).json(response);
   } catch (error) {
     res.status(400).json(error.message);
   }
