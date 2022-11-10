@@ -1,10 +1,13 @@
-import './App.css';
+import { Route } from "react-router-dom";
+import LandingPage from "./components/LandingPage/LandingPage";
+import NavBar from "./components/NavBar/NavBar";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Henry Food</h1>
-    </div>
+    <>
+      <Route exact path={"/"} render={() => <LandingPage />} />
+      <Route path={"/home"} render={() => <NavBar />} />
+    </>
   );
 }
 
