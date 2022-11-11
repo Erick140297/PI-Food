@@ -4,9 +4,9 @@ const postRecipe = require("../controllers/postRecipes")
 
 router.post("/recipes", async (req, res) => {
   try {
-    const { name, summary, healthScore, steps, arrayDiets } = req.body;
+    const { name, image, summary, healthScore, steps, arrayDiets } = req.body;
     
-    const response = await postRecipe(name, summary, healthScore, steps, arrayDiets)
+    const response = await postRecipe(name,image, summary, healthScore, steps, arrayDiets)
 
     res.status(200).json(response);
   } catch (error) {
