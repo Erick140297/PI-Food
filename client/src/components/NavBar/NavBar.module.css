@@ -1,0 +1,22 @@
+.navBar{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background: #c9cccc;
+  font-family: sans-serif;
+}
+
+.link{
+  background: #eff5f5;
+  border: 1px solid #379237;
+  border-radius: 5px;
+  padding: 10px;
+  color:#262926;
+}
+
+.link:hover{
+  background: #54B435;
+  color:#eff5f5;
+
+}

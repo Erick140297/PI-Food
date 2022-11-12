@@ -1,10 +1,11 @@
 import React from 'react'
+import s from "./SearchBar.module.css"
 
 const SearchBar = () => {
   return (
     <form >
-      <input type="text" />
-      <input type="submit" />
+      <input className={s.text} type="text" placeholder='Search recipe...'/>
+      <input className={s.btn} type="submit" value="Search"/>
     </form>
   )
 }

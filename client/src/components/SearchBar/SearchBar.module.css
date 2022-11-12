@@ -1,0 +1,25 @@
+.text{
+  height: 20px;
+  border-radius: 10px;
+  border: 1px solid #379237;
+  margin-right: 5px;
+}
+
+.text:focus{
+  outline: none;
+}
+
+.btn{
+  background: #eff5f5;
+  height: 25px;
+  border-radius: 10px;
+  border: 1px solid #379237;
+  cursor: pointer;
+  color: #262926;
+
+}
+
+.btn:hover{
+  background: #379237;
+  color: white;
+}
