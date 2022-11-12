@@ -1,0 +1,41 @@
+.img {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* align-items: center; */
+  min-height: 100vh;
+  background: url(./img.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+
+.topBar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  background-color: #eff5f5;
+  color: #54B435;
+}
+
+.btn:hover{
+  background: #379237;
+  color: white;
+}
+.btn{
+  background: #54B435;
+  color: #eff5f5;
+  height: 50px;
+  border-radius: 15px;
+  border: 0px;
+  font-size: large;
+  cursor: pointer;
+}
+
+.text{
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  background: #54B435 ;
+  opacity: 0.9;
+}
