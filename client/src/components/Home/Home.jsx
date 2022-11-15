@@ -1,23 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import s from "./Home.module.css";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import filter from "../filter";
 import Recipes from "../Recipes/Recipes";
-import {getDiets, getRecipes,} from "../../redux/actions";
+import s from "./Home.module.css";
 
 const Home = () => {
-
-  const dispatch = useDispatch()
   const diets = useSelector((state) => state.diets);
   const recipes = useSelector((state) => state.recipes);
 
   const [type, setType] = useState("");
   const [order, setOrder] = useState("none")
-
-  useEffect(() => {
-    dispatch(getDiets());
-    dispatch(getRecipes());
-  }, [dispatch]);
 
   const handlerChangeType = (e) => {
     setType(e.target.value);
