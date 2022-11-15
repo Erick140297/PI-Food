@@ -1,32 +1,61 @@
-import React, { useEffect } from "react";
-// import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { getRecipes } from "../../redux/actions";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import Recipe from "../Recipe/Recipe";
+import s from "./Recipes.module.css";
 
 const Recipes = () => {
-  const dispatch = useDispatch();
+  const diets = useSelector((state) => state.diets);
   const recipes = useSelector((state) => state.recipes);
+ 
+  const [type, setType] = useState("");
 
-  useEffect(() => {
-    dispatch(getRecipes());
-  }, [dispatch]);
+  const handlerChange = (e) =>{
+    setType(e.target.value)
+  }
+
+  console.log(type)
+
+  let data = []
+
+  if(!type){
+    data = recipes
+  } else {
+    data = recipes.filter((e) => e.diets.find((e) => e === type));
+  }
+
   
   return (
-    <div>
-      {recipes.map((recipe) => {
-        return (
-          <div key={recipe.id}>
-            <Recipe
-              id={recipe.id}
-              image={recipe.image}
-              name={recipe.name}
-              diets={recipe.diets}
-            />
-          </div>
-        );
-      })}
-    </div>
+    <>
+    <label>Diets: </label>
+      <p>Select a type of diet</p>
+      <select name="diet" onChange={(e)=>handlerChange(e)}>
+        {diets?.map((element, index) => {
+          return (
+            <option value={element.name} key={index}>
+              {element.name}
+            </option>
+          );
+        })}
+      </select>
+      {data.length === 0 ? (
+        <h2>Loading...</h2>
+      ) : (
+        <div className={s.container}>
+          {data.map((recipe) => {
+            return (
+              <div key={recipe.id}>
+                <Recipe
+                  id={recipe.id}
+                  image={recipe.image}
+                  name={recipe.name}
+                  diets={recipe.diets}
+                />
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </>
   );
 };
 

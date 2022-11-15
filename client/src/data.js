@@ -1,7 +1,8 @@
-export const data = [
+const array = [
   {
-    id: "705b88c1-0d86-406b-acaa-c1db8c2e4b19",
+    id: "6f995a35-5764-41dd-9d9c-e4b9c1e54188",
     name: "Calabacitas",
+    image: "http://localhost:3001/uploads/default.jpeg",
     summary: "Un plato delicioso",
     healthScore: 100,
     steps: ["paso 1", "paso 2", "paso 3"],
@@ -1961,3 +1962,10 @@ export const data = [
     ],
   },
 ];
+
+const filtro = (diet, array) => {
+  const result = array.filter((e) => e.diets.find((e) => e === diet));
+  return result;
+};
+
+console.log(filtro("gluten free", array));

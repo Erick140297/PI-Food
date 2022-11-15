@@ -1,16 +1,19 @@
-import React, { useEffect } from "react";
+import React, {  useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { getDiets } from "../../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
+import {getDiets, getRecipes,} from "../../redux/actions";
+
 import s from "./LandingPage.module.css";
 
 const LandingPage = () => {
-  const dispatch = useDispatch();
-
+  const dispatch = useDispatch()
+  const diets = useSelector((state) => state.diets);
+  console.log(diets)
   useEffect(() => {
     dispatch(getDiets());
+    dispatch(getRecipes());
   }, [dispatch]);
-
+  
   return (
     <div className={s.img}>
       <div className={s.topBar}>

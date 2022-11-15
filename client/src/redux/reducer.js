@@ -19,7 +19,7 @@ const reducer = (state = initialState, action) => {
     case GET_DIETS:
       return {
         ...state,
-        diets: action.payload,
+        diets: [{id:0, name:""}].concat(action.payload),
       };
     case GET_RECIPES:
       return {

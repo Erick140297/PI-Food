@@ -15,10 +15,12 @@ export const getDiets = () => {
   };
 };
 
-export const getRecipes = (name) => {
+export const getRecipes = () => {
   return function (dispatch) {
     return axios(`http://localhost:3001/recipes`).then((response) => {
       dispatch({ type: GET_RECIPES, payload: response.data });
     });
   };
 };
+
+
