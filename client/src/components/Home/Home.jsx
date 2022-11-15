@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import filter from "../filter";
+import control from "../control";
 import Recipes from "../Recipes/Recipes";
 import s from "./Home.module.css";
 
@@ -20,7 +20,7 @@ const Home = () => {
   }
 
   console.log(order)
-  const data = filter(type, order, recipes);
+  const data = control(type, order, recipes);
   
   return (
     <>
