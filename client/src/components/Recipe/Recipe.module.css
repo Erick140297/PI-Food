@@ -36,3 +36,8 @@
 .title{
   margin-left: 5px;
 }
+
+.score{
+  display: flex;
+  flex-direction: row;
+}

@@ -1,42 +1,10 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
 import Recipe from "../Recipe/Recipe";
 import s from "./Recipes.module.css";
 
-const Recipes = () => {
-  const diets = useSelector((state) => state.diets);
-  const recipes = useSelector((state) => state.recipes);
- 
-  const [type, setType] = useState("");
-
-  const handlerChange = (e) =>{
-    setType(e.target.value)
-  }
-
-  console.log(type)
-
-  let data = []
-
-  if(!type){
-    data = recipes
-  } else {
-    data = recipes.filter((e) => e.diets.find((e) => e === type));
-  }
-
-  
+const Recipes = ({data}) => {
   return (
     <>
-    <label>Diets: </label>
-      <p>Select a type of diet</p>
-      <select name="diet" onChange={(e)=>handlerChange(e)}>
-        {diets?.map((element, index) => {
-          return (
-            <option value={element.name} key={index}>
-              {element.name}
-            </option>
-          );
-        })}
-      </select>
       {data.length === 0 ? (
         <h2>Loading...</h2>
       ) : (
@@ -48,6 +16,7 @@ const Recipes = () => {
                   id={recipe.id}
                   image={recipe.image}
                   name={recipe.name}
+                  healthScore={recipe.healthScore}
                   diets={recipe.diets}
                 />
               </div>
