@@ -55,6 +55,7 @@ const Home = () => {
               {"<< Previous"}
             </button>
             <button
+              className={s.button}
               onClick={handlerClickPositive}
               disabled={page === pageNumber - 1}
             >
