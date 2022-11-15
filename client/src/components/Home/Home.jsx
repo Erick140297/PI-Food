@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import control from "../control";
+import { control, paginated } from "../controllers";
 import Recipes from "../Recipes/Recipes";
 import s from "./Home.module.css";
 
@@ -9,19 +9,30 @@ const Home = () => {
   const recipes = useSelector((state) => state.recipes);
 
   const [type, setType] = useState("");
-  const [order, setOrder] = useState("none")
+  const [order, setOrder] = useState("none");
+  const [page, setPage] = useState(0);
 
   const handlerChangeType = (e) => {
     setType(e.target.value);
   };
 
-  const handlerChangeOrder = (e)=>{
-    setOrder(e.target.value)
-  }
+  const handlerChangeOrder = (e) => {
+    setOrder(e.target.value);
+  };
 
-  console.log(order)
-  const data = control(type, order, recipes);
-  
+  const handlerClickPositive = () => {
+    setPage(page + 1);
+  };
+
+  const handlerClickNegative = () => {
+    setPage(page - 1);
+  };
+
+  const dataFilter = control(type, order, recipes);
+  const { pageNumber, data } = paginated(page, dataFilter);
+  console.log(pageNumber);
+  console.log(page);
+
   return (
     <>
       <div className={s.filters}>
@@ -37,8 +48,22 @@ const Home = () => {
             })}
           </select>
         </div>
+        <div className={s.paginated}>
+          <p>Paginated</p>
+          <div className={s.buttons}>
+            <button onClick={handlerClickNegative} disabled={page === 0}>
+              {"<< Previous"}
+            </button>
+            <button
+              onClick={handlerClickPositive}
+              disabled={page === pageNumber - 1}
+            >
+              {"Next >>"}
+            </button>
+          </div>
+        </div>
         <div>
-          <form className={s.order} onChange={(e)=> handlerChangeOrder(e)}>
+          <form className={s.order} onChange={(e) => handlerChangeOrder(e)}>
             <p>Alphabetical order</p>
             <div>
               <input name="order" type="radio" value="A" />
@@ -60,7 +85,7 @@ const Home = () => {
           </form>
         </div>
       </div>
-      <Recipes data ={data} />
+      <Recipes data={data} />
     </>
   );
 };

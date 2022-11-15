@@ -10,8 +10,7 @@ const Recipe = ({ id, image, name, healthScore, diets }) => {
         <div className={s.text}>
           <p className={s.title}>{name}</p>
           <div className={s.score}>
-            <p>Health score:</p>
-            <p>{healthScore}</p>
+            <p>{`Health score: ${healthScore}`}</p>
           </div>
           <p>Diets: </p>
           <ul>

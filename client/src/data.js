@@ -1,4 +1,4 @@
-const array = [
+const array1 = [
   {
     id: "6f995a35-5764-41dd-9d9c-e4b9c1e54188",
     name: "Calabacitas",
@@ -1963,9 +1963,45 @@ const array = [
   },
 ];
 
-const filtro = (diet, array) => {
-  const result = array.filter((e) => e.diets.find((e) => e === diet));
-  return result;
-};
+const paginated = (page, dataFilter)=>{
+  let data = []
+  let pageNumber = Math.ceil(dataFilter.length/9)
+  let count = page * 9
 
-console.log(filtro("gluten free", array));
+  if(dataFilter.length < 9){
+    for (let i = 0; i < dataFilter.length ; i++) {
+      data.push(dataFilter[i])
+    }
+  }else if(dataFilter.length % pageNumber === 0){
+    for (let i = count; i < count + 9; i++) {
+      data.push(dataFilter[i])
+    }
+  } else if ((page + 1) * 9 < dataFilter.length){
+    for (let i = count; i < count + 9; i++) {
+      data.push(dataFilter[i])
+    }
+  } else {
+    for (let i = count; i < dataFilter.length; i++) {
+      data.push(dataFilter[i])
+    }
+  }
+  return {
+    pageNumber,
+    data
+  }
+}
+
+// const array2 = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]
+
+// const array3 = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+
+// const array4 = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]
+
+// const array5 = [1,2,3]
+
+
+
+const { pageNumber, data } = paginated(2, array1)
+
+console.log(pageNumber)
+console.log(data)
