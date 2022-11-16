@@ -1,12 +1,13 @@
 import React from "react";
 import Recipe from "../Recipe/Recipe";
+import Loader from "../Loader/Loader";
 import s from "./Recipes.module.css";
 
 const Recipes = ({data}) => {
   return (
     <>
       {data.length === 0 ? (
-        <h2>Loading...</h2>
+        <Loader/>
       ) : (
         <div className={s.container}>
           {data.map((recipe) => {

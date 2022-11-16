@@ -1963,6 +1963,11 @@ const array1 = [
   },
 ];
 
+let array2 = []
+array1.forEach((e) =>array2.push({...e, name:e.name.toUpperCase() }))
+console.log(array2)
+
+
 // const paginated = (page, dataFilter)=>{
 //   let data = []
 //   let pageNumber = Math.ceil(dataFilter.length/9)
@@ -2004,16 +2009,16 @@ const array1 = [
 // console.log(pageNumber)
 // console.log(data)
 
-let data = [];
+// let data = [];
 
-for (let i = 0; i < array1.length; i++) {
-  for (let j = 0; j < array1[i].diets.length; j++) {
-    data.push(array1[i].diets[j]);
-  }
-}
+// for (let i = 0; i < array1.length; i++) {
+//   for (let j = 0; j < array1[i].diets.length; j++) {
+//     data.push(array1[i].diets[j]);
+//   }
+// }
 
-let dietsSet = new Set(data);
+// let dietsSet = new Set(data);
 
-let diets = [...dietsSet];
+// let diets = [...dietsSet];
 
-console.log(diets.length);
+// console.log(diets.length);

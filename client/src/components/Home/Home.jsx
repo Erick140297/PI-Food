@@ -30,8 +30,6 @@ const Home = () => {
 
   const dataFilter = control(type, order, recipes);
   const { pageNumber, data } = paginated(page, dataFilter);
-  console.log(pageNumber);
-  console.log(page);
 
   return (
     <>

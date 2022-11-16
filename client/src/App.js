@@ -3,6 +3,7 @@ import LandingPage from "./components/LandingPage/LandingPage";
 import NavBar from "./components/NavBar/NavBar";
 import CreateRecipe from "./components/CreateRecipe/CreateRecipe";
 import Home from "./components/Home/Home";
+import RecipeName from "./components/RecipeName/RecipeName";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Route path={"/home"} render={() => <NavBar />} />
       <Route exact path={"/home/recipes"} render={() => <Home />} />
       <Route exact path={"/home/create"} render={() => <CreateRecipe />} />
+      <Route exact path={"/home/name/:name"} render={() => <RecipeName />} />
     </>
   );
 }

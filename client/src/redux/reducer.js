@@ -1,9 +1,9 @@
 import {
   GET_DIETS,
   GET_RECIPES,
-  GET_RECIPES_NAME,
+  GET_RECIPE_NAME,
   CLEAN_NAME,
-  GET_RECIPES_ID,
+  GET_RECIPE_ID,
   CLEAN_ID,
 } from "./actions";
 
@@ -26,7 +26,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         recipes: action.payload,
       };
-    case GET_RECIPES_NAME:
+    case GET_RECIPE_NAME:
       return {
         ...state,
         recipeName: action.payload,
@@ -36,7 +36,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         recipeName: {},
       };
-    case GET_RECIPES_ID:
+    case GET_RECIPE_ID:
       return {
         ...state,
         recipeId: action.payload,

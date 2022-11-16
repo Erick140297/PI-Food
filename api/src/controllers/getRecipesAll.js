@@ -4,8 +4,10 @@ const getRecipesFromDB = require("./getRecipesFromDB");
 const getRecipesAll = async () => {
   let recipesApi = await getRecipesFromApi();
   let recipesDB = await getRecipesFromDB();
-  let recipes = recipesDB.concat(recipesApi);
+  let result = recipesDB.concat(recipesApi);
+  let recipes = [];
+  result.forEach((e) => recipes.push({ ...e, name: e.name.toUpperCase() }));
   return recipes
 };
 
-module.exports = getRecipesAll
+module.exports = getRecipesAll;
