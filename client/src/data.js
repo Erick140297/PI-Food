@@ -1963,33 +1963,33 @@ const array1 = [
   },
 ];
 
-const paginated = (page, dataFilter)=>{
-  let data = []
-  let pageNumber = Math.ceil(dataFilter.length/9)
-  let count = page * 9
+// const paginated = (page, dataFilter)=>{
+//   let data = []
+//   let pageNumber = Math.ceil(dataFilter.length/9)
+//   let count = page * 9
 
-  if(dataFilter.length < 9){
-    for (let i = 0; i < dataFilter.length ; i++) {
-      data.push(dataFilter[i])
-    }
-  }else if(dataFilter.length % pageNumber === 0){
-    for (let i = count; i < count + 9; i++) {
-      data.push(dataFilter[i])
-    }
-  } else if ((page + 1) * 9 < dataFilter.length){
-    for (let i = count; i < count + 9; i++) {
-      data.push(dataFilter[i])
-    }
-  } else {
-    for (let i = count; i < dataFilter.length; i++) {
-      data.push(dataFilter[i])
-    }
-  }
-  return {
-    pageNumber,
-    data
-  }
-}
+//   if(dataFilter.length < 9){
+//     for (let i = 0; i < dataFilter.length ; i++) {
+//       data.push(dataFilter[i])
+//     }
+//   }else if(dataFilter.length % pageNumber === 0){
+//     for (let i = count; i < count + 9; i++) {
+//       data.push(dataFilter[i])
+//     }
+//   } else if ((page + 1) * 9 < dataFilter.length){
+//     for (let i = count; i < count + 9; i++) {
+//       data.push(dataFilter[i])
+//     }
+//   } else {
+//     for (let i = count; i < dataFilter.length; i++) {
+//       data.push(dataFilter[i])
+//     }
+//   }
+//   return {
+//     pageNumber,
+//     data
+//   }
+// }
 
 // const array2 = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]
 
@@ -1999,9 +1999,21 @@ const paginated = (page, dataFilter)=>{
 
 // const array5 = [1,2,3]
 
+// const { pageNumber, data } = paginated(2, array1)
 
+// console.log(pageNumber)
+// console.log(data)
 
-const { pageNumber, data } = paginated(2, array1)
+let data = [];
 
-console.log(pageNumber)
-console.log(data)
+for (let i = 0; i < array1.length; i++) {
+  for (let j = 0; j < array1[i].diets.length; j++) {
+    data.push(array1[i].diets[j]);
+  }
+}
+
+let dietsSet = new Set(data);
+
+let diets = [...dietsSet];
+
+console.log(diets.length);
