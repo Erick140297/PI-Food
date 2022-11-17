@@ -1,0 +1,65 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto ;
+  border: 1px solid #379237;
+  background: #c9cccc;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+.requirement{
+  display: flex;
+  flex-direction: column;
+  margin-top: 5%;
+}
+
+
+
+.message{
+  color: red;
+}
+
+.input{
+  width:50%;
+  height: 20px;
+  border-radius: 10px;
+  border: 1px solid #379237;
+  margin-right: 5px;
+  margin-top: 3%;
+}
+
+.textarea{
+  border-radius: 10px;
+  border: 1px solid #379237;
+  margin-right: 5px;
+  margin-top: 3%;
+}
+
+.score{
+  background-image: #379237;
+}
+
+.btn{
+  background: #eff5f5;
+  height: 25px;
+  border-radius: 10px;
+  border: 1px solid #379237;
+  cursor: pointer;
+  color: #262926;
+
+}
+
+.btn:hover{
+  background: #54B435;
+  color: white;
+}
+
+.btnSubmit{
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
