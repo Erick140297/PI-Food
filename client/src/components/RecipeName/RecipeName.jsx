@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { cleanName, getRecipesName } from "../../redux/actions";
+import { cleanName, getRecipeName } from "../../redux/actions";
 import Loader from "../Loader/Loader"
 import RecipeDetail from "../RecipeDetail/RecipeDetail";
 
@@ -11,7 +11,7 @@ function RecipeName() {
   const data = useSelector((state) => state.recipeName);
 
   useEffect(() => {
-    dispatch(getRecipesName(name.toUpperCase()));
+    dispatch(getRecipeName(name.toUpperCase()));
     return function () {
       dispatch(cleanName());
     };

@@ -23,7 +23,7 @@ export const getRecipes = () => {
   };
 };
 
-export const getRecipesName = (name) => {
+export const getRecipeName = (name) => {
   return function (dispatch) {
     return axios(`http://localhost:3001/recipes?name=${name}`).then(
       (response) => {
@@ -37,4 +37,20 @@ export const getRecipesName = (name) => {
 
 export const cleanName = () => {
   return { type: CLEAN_NAME };
+};
+
+export const getRecipeId = (id) => {
+  return function (dispatch) {
+    return axios(`http://localhost:3001/recipes/${id}`).then(
+      (response) => {
+        dispatch({ type: GET_RECIPE_ID, payload: response.data });
+      }
+    ).catch((error)=>{
+      dispatch({ type: GET_RECIPE_ID, payload: error.response.data });
+    });
+  };
+};
+
+export const cleanId = () => {
+  return { type: CLEAN_ID };
 };

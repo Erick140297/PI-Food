@@ -18,7 +18,7 @@ const RecipeDetail = ({ data }) => {
                 <b>Diets: </b>
               </p>
               <ul>
-                {data.diets.map((diet, index) => {
+                {data.diets?.map((diet, index) => {
                   return <li key={index}>{diet}</li>;
                 })}
               </ul>
@@ -36,7 +36,7 @@ const RecipeDetail = ({ data }) => {
               <b>Steps: </b>
             </p>
             <ul>
-              {data.steps.map((step, index) => {
+              {data.steps?.map((step, index) => {
                 return <li key={index}>{step}</li>;
               })}
             </ul>
