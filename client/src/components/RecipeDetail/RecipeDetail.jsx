@@ -5,7 +5,9 @@ const RecipeDetail = ({ data }) => {
   return (
     <>
       {Object.entries(data).length === 1 ? (
-        <p>{data.error}</p>
+        <div className={s.error}>
+          <p>{data.error}</p>
+        </div>
       ) : (
         <div className={s.container1}>
           <div className={s.container2}>

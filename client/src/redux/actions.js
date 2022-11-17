@@ -19,6 +19,8 @@ export const getRecipes = () => {
   return function (dispatch) {
     return axios(`http://localhost:3001/recipes`).then((response) => {
       dispatch({ type: GET_RECIPES, payload: response.data });
+    }).catch((error)=>{
+      dispatch({ type: GET_RECIPES, payload: error.response.data });
     });
   };
 };

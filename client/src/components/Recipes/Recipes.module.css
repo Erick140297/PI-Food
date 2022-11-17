@@ -7,3 +7,18 @@
   margin-top: 20px;
   margin-bottom: 40px;
 }
+
+.error{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  color: red;
+  border: 3px solid #379237;
+  background: #a5e5a5;
+  box-shadow: 0.3em 0.3em 1em rgba(0,0,0,0.3);
+}
