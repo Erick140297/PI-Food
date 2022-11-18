@@ -1,9 +1,12 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import s from "./CreateRecipe.module.css";
 
 const CreateRecipe = () => {
   const data = useSelector((state) => state.diets);
+  let history = useHistory();
   const [name, setName] = useState("");
   const [summary, setSummary] = useState("");
   const [score, setScore] = useState(0);
@@ -46,15 +49,40 @@ const CreateRecipe = () => {
 
   const handlerSubmit = (e) => {
     e.preventDefault();
-    console.log(obj);
+    axios.post('http://localhost:3001/recipes', obj)
+    .then(response => history.push(`/home/success/${response.data.name}`));
+    // .then(response => console.log(response));
+    // history.push(`/home/success/${obj.name}`);
+  };
+
+  const translator = (diets) => {
+    let arrayDiets = [];
+    const dictionary = {
+      "gluten free": 1,
+      ketogenic: 2,
+      vegetarian: 3,
+      vegan: 4,
+      "dairy free": 5,
+      "lacto ovo vegetarian": 6,
+      paleolithic: 7,
+      primal: 8,
+      "whole 30": 9,
+      pescatarian: 10,
+      "fodmap friendly": 11,
+    };
+    diets.forEach((element) => {
+      arrayDiets.push(dictionary[element]);
+    });
+    return arrayDiets;
   };
 
   const obj = {
     name,
+    image:"http://localhost:3001/uploads/default.jpeg",
     summary,
-    healthScore: score,
+    healthScore: parseInt(score),
     steps,
-    diets,
+    arrayDiets: translator(diets)
   };
 
   return (
@@ -155,7 +183,7 @@ const CreateRecipe = () => {
             !obj.summary ||
             obj.healthScore < 1 ||
             obj.steps.length === 0 ||
-            obj.diets.length === 0
+            obj.arrayDiets.length === 0
           }
         />
       </form>

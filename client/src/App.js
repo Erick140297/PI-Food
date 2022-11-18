@@ -5,6 +5,7 @@ import CreateRecipe from "./components/CreateRecipe/CreateRecipe";
 import Home from "./components/Home/Home";
 import RecipeName from "./components/RecipeName/RecipeName";
 import RecipeId from "./components/RecipeId/RecipeId";
+import Success from "./components/Success/Success";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route exact path={"/home/create"} render={() => <CreateRecipe />} />
       <Route exact path={"/home/name/:name"} render={() => <RecipeName />} />
       <Route exact path={"/home/recipes/:id"} render={() => <RecipeId />} />
+      <Route exact path={"/home/success/:name"} render={() => <Success />} />
     </>
   );
 }

@@ -1,0 +1,15 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #c9cccc;
+  border: 1px solid #379237;
+  font-size: large;
+  border-radius: 15px;
+  color: black;
+}

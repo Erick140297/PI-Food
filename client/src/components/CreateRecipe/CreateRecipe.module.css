@@ -18,8 +18,6 @@
   margin-top: 5%;
 }
 
-
-
 .message{
   color: red;
 }
@@ -31,6 +29,14 @@
   border: 1px solid #379237;
   margin-right: 5px;
   margin-top: 3%;
+}
+
+.input:focus{
+  outline: none;
+}
+
+.textarea:focus{
+  outline: none;
 }
 
 .textarea{
