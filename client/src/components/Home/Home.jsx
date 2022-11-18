@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getDiets, getRecipes } from "../../redux/actions";
 import { control, paginated } from "../controllers";
 import Recipes from "../Recipes/Recipes";
 import s from "./Home.module.css";
@@ -7,10 +8,16 @@ import s from "./Home.module.css";
 const Home = () => {
   const diets = useSelector((state) => state.diets);
   const recipes = useSelector((state) => state.recipes);
+  const dispatch = useDispatch();
 
   const [type, setType] = useState("");
   const [order, setOrder] = useState("none");
   const [page, setPage] = useState(0);
+
+  useEffect(() => {
+    dispatch(getDiets());
+    dispatch(getRecipes());
+  }, [dispatch]);
 
   const handlerChangeType = (e) => {
     setType(e.target.value);

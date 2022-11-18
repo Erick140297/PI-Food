@@ -1,17 +1,9 @@
-import React, { useEffect } from "react";
-import {  useDispatch } from "react-redux";
-import { getDiets, getRecipes } from "../../redux/actions";
+import React from "react";
 import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
 import s from "./NavBar.module.css";
 
 const NavBar = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getDiets());
-    dispatch(getRecipes());
-  }, [dispatch]);
 
   return (
     <div className={s.navBar}>
