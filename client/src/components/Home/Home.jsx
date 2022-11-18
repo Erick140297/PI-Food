@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDiets, getRecipes } from "../../redux/actions";
 import { control, paginated } from "../controllers";
 import Recipes from "../Recipes/Recipes";
+import Loader from "../Loader/Loader";
 import s from "./Home.module.css";
 
 const Home = () => {
@@ -91,7 +92,11 @@ const Home = () => {
           </form>
         </div>
       </div>
-      <Recipes data={data} />
+      {dataFilter.length === 0 ? (
+        <Loader />
+      ) : (
+        <Recipes data={data} error={recipes} />
+      )}
     </>
   );
 };

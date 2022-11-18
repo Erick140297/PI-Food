@@ -1,13 +1,13 @@
 import React from "react";
 import Recipe from "../Recipe/Recipe";
-import Loader from "../Loader/Loader";
+import Error from "../Error/Error";
 import s from "./Recipes.module.css";
 
-const Recipes = ({data}) => {
+const Recipes = ({ data, error }) => {
   return (
     <>
-      {data.length === 0 ? (
-        <Loader/>
+      {Object.entries(error).length === 1 ? (
+        <Error message={error.error} />
       ) : (
         <div className={s.container}>
           {data.map((recipe) => {

@@ -1,13 +1,12 @@
 import React from "react";
+import Error from "../Error/Error";
 import s from "./RecipeDetail.module.css";
 
 const RecipeDetail = ({ data }) => {
   return (
     <>
       {Object.entries(data).length === 1 ? (
-        <div className={s.error}>
-          <p>{data.error}</p>
-        </div>
+        <Error message={data.error} />
       ) : (
         <div className={s.container1}>
           <div className={s.container2}>

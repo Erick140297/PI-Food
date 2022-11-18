@@ -1,6 +1,9 @@
 export const control = (type, order, recipes) => {
-  
   let arrayType = [];
+
+  if (Object.entries(recipes).length === 1) {
+    return (arrayType = recipes);
+  }
 
   if (!type) {
     arrayType = recipes;
@@ -57,31 +60,30 @@ export const control = (type, order, recipes) => {
   }
 };
 
-export const paginated = (page, dataFilter)=>{
-  let data = []
-  let pageNumber = Math.ceil(dataFilter.length/9)
-  let count = page * 9
+export const paginated = (page, dataFilter) => {
+  let data = [];
+  let pageNumber = Math.ceil(dataFilter.length / 9);
+  let count = page * 9;
 
-  if(dataFilter.length < 9){
-    for (let i = 0; i < dataFilter.length ; i++) {
-      data.push(dataFilter[i])
+  if (dataFilter.length < 9) {
+    for (let i = 0; i < dataFilter.length; i++) {
+      data.push(dataFilter[i]);
     }
-  }else if(dataFilter.length % pageNumber === 0){
+  } else if (dataFilter.length % pageNumber === 0) {
     for (let i = count; i < count + 9; i++) {
-      data.push(dataFilter[i])
+      data.push(dataFilter[i]);
     }
-  } else if ((page + 1) * 9 < dataFilter.length){
+  } else if ((page + 1) * 9 < dataFilter.length) {
     for (let i = count; i < count + 9; i++) {
-      data.push(dataFilter[i])
+      data.push(dataFilter[i]);
     }
   } else {
     for (let i = count; i < dataFilter.length; i++) {
-      data.push(dataFilter[i])
+      data.push(dataFilter[i]);
     }
   }
   return {
     pageNumber,
-    data
-  }
-}
-
+    data,
+  };
+};
