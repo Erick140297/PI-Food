@@ -29,6 +29,7 @@ const SearchBar = () => {
         className={s.btn}
         type="submit"
         value="Search"
+        disabled={!name}
       />
     </form>
   );
