@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDiets, getRecipes } from "../../redux/actions";
+import { getDiets, getRecipes, cleanRecipes } from "../../redux/actions";
 import { control, paginated } from "../controllers";
 import Recipes from "../Recipes/Recipes";
 import Loader from "../Loader/Loader";
@@ -18,6 +18,7 @@ const Home = () => {
   useEffect(() => {
     dispatch(getDiets());
     dispatch(getRecipes());
+    return dispatch(cleanRecipes());
   }, [dispatch]);
 
   const handlerChangeType = (e) => {
