@@ -1,4 +1,4 @@
-const { Recipe, Diet } = require("../../src/db.js");
+const { Recipe } = require("../../src/db.js");
 
 describe("Recipe model", () => {
   describe("Validators", () => {
