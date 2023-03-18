@@ -8,9 +8,11 @@ export const CLEAN_NAME = "CLEAN_NAME";
 export const GET_RECIPE_ID = "GET_RECIPE_ID";
 export const CLEAN_ID = "CLEAN_ID";
 
+const URL = `https://pi-food-production-a17c.up.railway.app`
+
 export const getDiets = () => {
   return function (dispatch) {
-    return axios(`http://localhost:3001/diets`).then((response) => {
+    return axios(`${URL}/diets`).then((response) => {
       dispatch({ type: GET_DIETS, payload: response.data });
     });
   };
@@ -18,7 +20,7 @@ export const getDiets = () => {
 
 export const getRecipes = () => {
   return function (dispatch) {
-    return axios(`http://localhost:3001/recipes`).then((response) => {
+    return axios(`${URL}/recipes`).then((response) => {
       dispatch({ type: GET_RECIPES, payload: response.data });
     }).catch((error)=>{
       dispatch({ type: GET_RECIPES, payload: error.response.data });
@@ -32,7 +34,7 @@ export const cleanRecipes = () => {
 
 export const getRecipeName = (name) => {
   return function (dispatch) {
-    return axios(`http://localhost:3001/recipes?name=${name}`).then(
+    return axios(`${URL}/recipes?name=${name}`).then(
       (response) => {
         dispatch({ type: GET_RECIPE_NAME, payload: response.data });
       }
@@ -48,7 +50,7 @@ export const cleanName = () => {
 
 export const getRecipeId = (id) => {
   return function (dispatch) {
-    return axios(`http://localhost:3001/recipes/${id}`).then(
+    return axios(`${URL}/recipes/${id}`).then(
       (response) => {
         dispatch({ type: GET_RECIPE_ID, payload: response.data });
       }
